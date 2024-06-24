@@ -1,18 +1,3 @@
-<script setup>
-import { ref } from 'vue';
-import { bootcampt_backend } from 'declarations/bootcampt_backend/index';
-let greeting = ref('');
-
-async function handleSubmit(e) {
-  e.preventDefault();
-  const target = e.target;
-  const name = target.querySelector('#name').value;
-  await bootcampt_backend.greet(name).then((response) => {
-    greeting.value = response;
-  });
-}
-</script>
-
 <template>
   <main>
     <img src="/logo2.svg" alt="DFINITY logo" />
@@ -23,6 +8,27 @@ async function handleSubmit(e) {
       <input id="name" alt="Name" type="text" />
       <button type="submit">Click Me!</button>
     </form>
-    <section id="greeting">{{ greeting }}</section>
+    <section id="greeting">hello world
+      <br>
+      {{ licznik }}
+      <br><button @click="podbij">podbij</button>
+    </section>
+    
   </main>
 </template>
+
+<script>
+  export default{
+    data(){
+      return{
+        licznik: 0
+      }
+    },
+    methods: {
+      podbij(){
+        this.licznik++
+      }
+    }
+  }
+
+</script>
